@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: BACK-END
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 1 (AUTO-INCREMENTO)
-Data de Atualização..: 06/11/2025 08:10:55
+Versão...............: 2 (AUTO-INCREMENTO)
+Data de Atualização..: 06/11/2025 08:18:18
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -40,13 +40,15 @@ Responsável..........: Marcos Morais
 
 ```
 📂 documentos
+└── 📄 txt
 ```
 ## 🌳 Estrutura do Repositório
 
 ```
 📂 pss_portifolio
 ├── 📄 README.md
-├── 🗂️ documentos
+├── 📂 documentos
+│   └── 📄 txt
 └── 📄 versao.txt
 ```
 ## 📜 Licença
