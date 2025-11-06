@@ -7,10 +7,10 @@ O Porto Seguro da Sorte é uma plataforma digital voltada para a organização e
 ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN 
 
 ```
-Repositório..........: BACK-END
+Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 6 (AUTO-INCREMENTO)
-Data de Atualização..: 06/11/2025 08:25:26
+Versão...............: 7 (AUTO-INCREMENTO)
+Data de Atualização..: 06/11/2025 08:32:03
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -36,11 +36,11 @@ Responsável..........: Marcos Morais
   <img src='https://img.shields.io/badge/drf--yasg-Swagger_Integration-6DB33F?logo=swagger&logoColor=white' alt='drf-yasg' />
 </p>
 
-## 📚 Sumário dos Repositórios Técnicos (ResTIC36)
+## 📚 Sumário dos Repositórios Técnicos
 
 > *Gerado automaticamente a partir de arquivos `.url` em `./documentos/`. 
 Cada `.url` deve conter uma linha `URL=...`. 
-O nome do arquivo define as colunas, ex.: `Equipe 11 - Campo Inteligente – Back-End.url`.*
+O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Back-End.url`.*
 
 
 | Equipe | Projeto | Descrição | Repositório |
@@ -79,5 +79,5 @@ Contribuições, sugestões e feedbacks são muito bem-vindos! Caso tenha algum 
 
 --- 
 
-Desenvolvido com ❤️ pela equipe de [Marcos Morais](https://www.linkedin.com/in/marcosmoraisjr/) 
+Desenvolvido com ❤️ pela de [Marcos Morais](https://www.linkedin.com/in/marcosmoraisjr/) 
 
