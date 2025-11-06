@@ -152,8 +152,8 @@ def ler_descricao_sidecar(stem: str) -> str:
 def extrair_equipe_projeto_do_nome(stem: str) -> tuple[str, str]:
     """
     Padrões aceitos (recomendado para automação):
-      - 'Equipe 11 - Campo Inteligente – Back-End'
-      - 'Equipe 12 — WeaveTrip – Front-End'
+      - 'Equipe 0X - Nome – Back-End'
+      - 'Equipe 0y — Nome – Front-End'
     Regras:
       - Primeiro separador: '-' ou '—' (hífen ou travessão) entre Equipe e Projeto
       - O restante é o título do Projeto
@@ -162,7 +162,7 @@ def extrair_equipe_projeto_do_nome(stem: str) -> tuple[str, str]:
     # tenta "Equipe X - <Projeto>"
     m = re.match(r"^\s*(Equipe\s+\d+)\s*[-—]\s*(.+)\s*$", stem, flags=re.IGNORECASE)
     if m:
-        equipe = m.group(1).strip().title()  # "Equipe 11"
+        equipe = m.group(1).strip().title()  # "Equipe 0X"
         projeto = m.group(2).strip()
         return (equipe, projeto)
     # fallback
@@ -216,10 +216,10 @@ def montar_tabela_repositorios(repos: list[dict]) -> str:
     - Tabela com colunas: Equipe | Projeto | Descrição | Repositório
     """
     linhas = []
-    linhas.append("## 📚 Sumário dos Repositórios Técnicos (ResTIC36)\n")
+    linhas.append("## 📚 Sumário dos Repositórios Técnicos\n")
     linhas.append("> *Gerado automaticamente a partir de arquivos `.url` em `./documentos/`. ")
     linhas.append("Cada `.url` deve conter uma linha `URL=...`. ")
-    linhas.append("O nome do arquivo define as colunas, ex.: `Equipe 11 - Campo Inteligente – Back-End.url`.*\n")
+    linhas.append("O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Back-End.url`.*\n")
     linhas.append("")
     linhas.append("| Equipe | Projeto | Descrição | Repositório |")
     linhas.append("|:-------|:--------|:----------|:------------|")
@@ -297,7 +297,7 @@ def gerar_readme(versao, data_hora, repos_from_docs):
         readme.write("## ℹ️ Importante \n\n")
         readme.write("ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN \n\n")
         readme.write("```\n")
-        readme.write(f"Repositório..........: BACK-END\n")
+        readme.write(f"Repositório..........: Portifólio\n")
         readme.write(f"Sistema..............: Porto Seguro da Sorte\n")
         readme.write(f"Versão...............: {versao} (AUTO-INCREMENTO)\n")
         readme.write(f"Data de Atualização..: {data_hora}\n")
@@ -357,7 +357,7 @@ def gerar_readme(versao, data_hora, repos_from_docs):
         readme.write("## 🤝 Agradecimentos\n\n")
         readme.write("Contribuições, sugestões e feedbacks são muito bem-vindos! Caso tenha algum comentário ou queira contribuir com o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.\n\n")
         readme.write("--- \n\n")
-        readme.write("Desenvolvido com ❤️ pela equipe de [Marcos Morais](https://www.linkedin.com/in/marcosmoraisjr/) \n\n")
+        readme.write("Desenvolvido com ❤️ pela de [Marcos Morais](https://www.linkedin.com/in/marcosmoraisjr/) \n\n")
 
 # -------------------- Main --------------------
 if __name__ == "__main__":
