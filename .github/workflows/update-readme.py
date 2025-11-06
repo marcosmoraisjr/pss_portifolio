@@ -1,4 +1,3 @@
-
 # .github/workflows/update-readme.py
 import os
 from datetime import datetime
@@ -24,6 +23,9 @@ VERSAO_FILE = os.path.join(README_DIR, "versao.txt")
 DOCS_DIR = os.path.join(BASE_DIR, "documentos")
 os.makedirs(DOCS_DIR, exist_ok=True)
 
+# Arquivo de links externos de repositórios dentro de documentos/
+DOCS_REPOS_FILE = os.path.join(DOCS_DIR, "repositorios.md")
+
 # Extensões e diretórios que devem ser ocultados na árvore
 OCULTA_EXT = {".yml", ".py", ".git", ".webp"}
 OCULTA_DIR = {
@@ -42,10 +44,41 @@ OCULTA_DIR = {
 # Fuso horário para data/hora
 FUSO_HORARIO_BRASIL = pytz.timezone("America/Sao_Paulo")
 
+# ================== DADOS: Sumário de Repositórios (editar aqui quando precisar) ==================
+REPOS_SUMARIO = [
+    {
+        "equipe": "Equipe 11",
+        "projeto": "🌾 Campo Inteligente – Back-End",
+        "descricao": "API REST em Django com autenticação JWT, Redis e CI/CD via GitHub Actions",
+        "url": "https://github.com/marcosmoraisjr/ResTIC36_Equipe11-startup-campo-inteligente-back",
+        "slug": "ResTIC36_Equipe11-startup-campo-inteligente-back",
+    },
+    {
+        "equipe": "Equipe 11",
+        "projeto": "🌾 Campo Inteligente – Front-End (Site)",
+        "descricao": "Dashboard Next.js e integração com iAGRO e API agrícola",
+        "url": "https://github.com/marcosmoraisjr/ResTIC36_Equipe11-startup-campo-inteligente-site",
+        "slug": "ResTIC36_Equipe11-startup-campo-inteligente-site",
+    },
+    {
+        "equipe": "Equipe 12",
+        "projeto": "✈️ WeaveTrip – Back-End",
+        "descricao": "Node.js + GraphQL com integração SportsEvents365 e SendGrid",
+        "url": "https://github.com/marcosmoraisjr/ResTIC36_Equipe12-WeaveTrip-back",
+        "slug": "ResTIC36_Equipe12-WeaveTrip-back",
+    },
+    {
+        "equipe": "Equipe 12",
+        "projeto": "✈️ WeaveTrip – Front-End",
+        "descricao": "Interface em Next.js com módulos dinâmicos e suporte a microsserviços",
+        "url": "https://github.com/marcosmoraisjr/ResTIC36_Equipe12-WeaveTrip-front",
+        "slug": "ResTIC36_Equipe12-WeaveTrip-front",
+    },
+]
+# ==================================================================================================
+
 
 # -------------------- Versão --------------------
-
-
 def ler_versao():
     """Lê a versão atual do versao.txt. Retorna int ou None se não existir/for inválido."""
     if not os.path.exists(VERSAO_FILE):
@@ -70,8 +103,6 @@ def obter_data_hora_brasilia() -> str:
 
 
 # -------------------- Árvore de diretórios --------------------
-
-
 def gerar_arvore(path, ignorar=None, prefixo="", is_root=True, nome_raiz=None):
     """Gera uma árvore de diretórios/arquivos com emojis, ocultando extensões e pastas especificadas."""
     ignorar = set(ignorar) if ignorar else set()
@@ -134,9 +165,34 @@ def gerar_arvore(path, ignorar=None, prefixo="", is_root=True, nome_raiz=None):
     return "\n".join(linhas)
 
 
+# -------------------- Sumário de Repositórios --------------------
+def montar_tabela_repositorios(repos):
+    """Gera markdown do sumário de repositórios em formato de tabela."""
+    linhas = []
+    linhas.append("## 📚 Sumário dos Repositórios Técnicos (ResTIC36)\n")
+    linhas.append("> *Cada repositório reflete uma entrega real desenvolvida durante a Residência TIC 36, com histórico preservado de commits, branches e integrações.*\n")
+    linhas.append("")
+    linhas.append("| Equipe | Projeto | Descrição | Repositório |")
+    linhas.append("|:-------|:--------|:----------|:------------|")
+    for r in repos:
+        linhas.append(f"| **{r['equipe']}** | {r['projeto']} | {r['descricao']} | [{r['slug']}]({r['url']}) |")
+    linhas.append("")  # linha em branco final
+    return "\n".join(linhas)
+
+
+def salvar_repositorios_em_documentos(repos, destino_md: str):
+    """Cria/atualiza 'documentos/repositorios.md' com os links dos repositórios externos."""
+    linhas = []
+    linhas.append("# 📚 Repositórios Técnicos — Links Externos\n")
+    linhas.append("_Esta página lista os repositórios do ecossistema com seus respectivos links._\n")
+    for r in repos:
+        linhas.append(f"- **{r['equipe']}** — {r['projeto']}\n  - {r['descricao']}\n  - Repositório: <{r['url']}>\n")
+    conteudo = "\n".join(linhas) + "\n"
+    with open(destino_md, "w", encoding="utf-8") as f:
+        f.write(conteudo)
+
+
 # -------------------- README --------------------
-
-
 def atualizar_readme():
     """
     Regras de versão:
@@ -150,6 +206,11 @@ def atualizar_readme():
         nova_versao = salvar_versao(versao_atual + 1)  # execuções seguintes -> +1
 
     data_hora = obter_data_hora_brasilia()
+
+    # Gera/atualiza o arquivo de repositórios dentro de documentos/
+    salvar_repositorios_em_documentos(REPOS_SUMARIO, DOCS_REPOS_FILE)
+
+    # Atualiza o README principal
     gerar_readme(nova_versao, data_hora)
 
 
@@ -220,6 +281,15 @@ def gerar_readme(versao, data_hora):
             "  <img src='https://img.shields.io/badge/drf--yasg-Swagger_Integration-6DB33F?logo=swagger&logoColor=white' alt='drf-yasg' />\n"
         )
         readme.write("</p>\n\n")
+
+        # === NOVA SEÇÃO: Sumário dos Repositórios Técnicos ===
+        readme.write(montar_tabela_repositorios(REPOS_SUMARIO))
+        readme.write("\n")
+
+        # Link explícito para o arquivo dentro de documentos
+        readme.write(
+            f"🔗 Consulte também: [`documentos/{os.path.basename(DOCS_REPOS_FILE)}`](./documentos/{os.path.basename(DOCS_REPOS_FILE)}) para a lista de links externos.\n\n"
+        )
 
         readme.write("## 📂 Documentos\n\n")
         readme.write("```\n")
