@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: BACK-END
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 5 (AUTO-INCREMENTO)
-Data de Atualização..: 06/11/2025 08:20:46
+Versão...............: 6 (AUTO-INCREMENTO)
+Data de Atualização..: 06/11/2025 08:25:26
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -38,15 +38,15 @@ Responsável..........: Marcos Morais
 
 ## 📚 Sumário dos Repositórios Técnicos (ResTIC36)
 
-> *Cada repositório reflete uma entrega real desenvolvida durante a Residência TIC 36, com histórico preservado de commits, branches e integrações.*
+> *Gerado automaticamente a partir de arquivos `.url` em `./documentos/`. 
+Cada `.url` deve conter uma linha `URL=...`. 
+O nome do arquivo define as colunas, ex.: `Equipe 11 - Campo Inteligente – Back-End.url`.*
 
 
 | Equipe | Projeto | Descrição | Repositório |
 |:-------|:--------|:----------|:------------|
-| **Equipe 11** | 🌾 Campo Inteligente – Back-End | API REST em Django com autenticação JWT, Redis e CI/CD via GitHub Actions | [ResTIC36_Equipe11-startup-campo-inteligente-back](https://github.com/marcosmoraisjr/ResTIC36_Equipe11-startup-campo-inteligente-back) |
-| **Equipe 11** | 🌾 Campo Inteligente – Front-End (Site) | Dashboard Next.js e integração com iAGRO e API agrícola | [ResTIC36_Equipe11-startup-campo-inteligente-site](https://github.com/marcosmoraisjr/ResTIC36_Equipe11-startup-campo-inteligente-site) |
-| **Equipe 12** | ✈️ WeaveTrip – Back-End | Node.js + GraphQL com integração SportsEvents365 e SendGrid | [ResTIC36_Equipe12-WeaveTrip-back](https://github.com/marcosmoraisjr/ResTIC36_Equipe12-WeaveTrip-back) |
-| **Equipe 12** | ✈️ WeaveTrip – Front-End | Interface em Next.js com módulos dinâmicos e suporte a microsserviços | [ResTIC36_Equipe12-WeaveTrip-front](https://github.com/marcosmoraisjr/ResTIC36_Equipe12-WeaveTrip-front) |
+| — | pss_backend | — | [pss_backend](https://github.com/marcosmoraisjr/pss_backend) |
+| — | pss_frontend | — | [pss_frontend](https://github.com/marcosmoraisjr/pss_frontend) |
 
 🔗 Consulte também: [`documentos/repositorios.md`](./documentos/repositorios.md) para a lista de links externos.
 
