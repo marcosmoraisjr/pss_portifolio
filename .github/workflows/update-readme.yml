@@ -1,4 +1,4 @@
-#projeto/.github/workflows/update-readme.yml
+# projeto/.github/workflows/update-readme.yml
 
 name: Executar update-readme.py
 
@@ -34,10 +34,10 @@ jobs:
           sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
           sudo dpkg-reconfigure -f noninteractive tzdata
 
-      # Passo 4: Instalar dependências necessárias para o script (Pillow e pytz)
+      # Passo 4: Instalar dependências necessárias (Pillow e pytz)
       - name: Instalar dependências (Pillow e pytz)
-        # CORREÇÃO: Pillow adicionado aqui
-        run: pip install Pillow pytz
+        # CORREÇÃO CRÍTICA DO AMBIENTE: Garante a instalação do Pillow
+        run: python -m pip install Pillow pytz
 
       # Passo 5: Executar o script Python
       - name: Executar update-readme.py
