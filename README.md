@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 8 (AUTO-INCREMENTO)
-Data de Atualização..: 16/11/2025 17:07:29
+Versão...............: 9 (AUTO-INCREMENTO)
+Data de Atualização..: 16/11/2025 17:08:20
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -67,7 +67,8 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 │   ├── 📄 pss_backend.url
 │   ├── 📄 pss_frontend.url
 │   └── 📄 repositorios.md
-├── 📄 imagens
+├── 📂 imagens
+│   └── 📄 txt
 └── 📄 versao.txt
 ```
 ## 📜 Licença
