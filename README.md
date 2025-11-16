@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 21 (AUTO-INCREMENTO)
-Data de Atualização..: 16/11/2025 18:25:36
+Versão...............: 22 (AUTO-INCREMENTO)
+Data de Atualização..: 16/11/2025 18:27:14
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -71,6 +71,9 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 │   ├── 📄 pss_frontend.url
 │   └── 📄 repositorios.md
 ├── 📂 imagens
+│   ├── 📄 backend (01).png
+│   ├── 📄 backend (02).png
+│   ├── 📄 backend (03).png
 │   ├── 📄 backend (1).png
 │   ├── 📄 backend (10).png
 │   ├── 📄 backend (11).png
@@ -86,15 +89,17 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 ```
 ## 🖼️ Imagens do Projeto
 
-Aqui estão **10** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:
+Aqui estão **13** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:
 
 | Demonstração | Demonstração |
 |---|---|
-| **Tela 1**<br><img src="./imagens/backend (1).png" alt="Tela 1" width="400"/> | **Tela 2**<br><img src="./imagens/backend (10).png" alt="Tela 2" width="400"/> |
-| **Tela 3**<br><img src="./imagens/backend (11).png" alt="Tela 3" width="400"/> | **Tela 4**<br><img src="./imagens/backend (12).png" alt="Tela 4" width="400"/> |
-| **Tela 5**<br><img src="./imagens/backend (2).png" alt="Tela 5" width="400"/> | **Tela 6**<br><img src="./imagens/backend (3).png" alt="Tela 6" width="400"/> |
-| **Tela 7**<br><img src="./imagens/backend (6).png" alt="Tela 7" width="400"/> | **Tela 8**<br><img src="./imagens/backend (7).png" alt="Tela 8" width="400"/> |
-| **Tela 9**<br><img src="./imagens/backend (8).png" alt="Tela 9" width="400"/> | **Tela 10**<br><img src="./imagens/backend (9).png" alt="Tela 10" width="400"/> |
+| **Tela 1**<br><img src="./imagens/backend (01).png" alt="Tela 1" width="400"/> | **Tela 2**<br><img src="./imagens/backend (02).png" alt="Tela 2" width="400"/> |
+| **Tela 3**<br><img src="./imagens/backend (03).png" alt="Tela 3" width="400"/> | **Tela 4**<br><img src="./imagens/backend (1).png" alt="Tela 4" width="400"/> |
+| **Tela 5**<br><img src="./imagens/backend (10).png" alt="Tela 5" width="400"/> | **Tela 6**<br><img src="./imagens/backend (11).png" alt="Tela 6" width="400"/> |
+| **Tela 7**<br><img src="./imagens/backend (12).png" alt="Tela 7" width="400"/> | **Tela 8**<br><img src="./imagens/backend (2).png" alt="Tela 8" width="400"/> |
+| **Tela 9**<br><img src="./imagens/backend (3).png" alt="Tela 9" width="400"/> | **Tela 10**<br><img src="./imagens/backend (6).png" alt="Tela 10" width="400"/> |
+| **Tela 11**<br><img src="./imagens/backend (7).png" alt="Tela 11" width="400"/> | **Tela 12**<br><img src="./imagens/backend (8).png" alt="Tela 12" width="400"/> |
+| **Tela 13**<br><img src="./imagens/backend (9).png" alt="Tela 13" width="400"/> |   |
 
 ---
 ## 📜 Licença
