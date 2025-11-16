@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 13 (AUTO-INCREMENTO)
-Data de Atualização..: 16/11/2025 17:56:07
+Versão...............: 14 (AUTO-INCREMENTO)
+Data de Atualização..: 16/11/2025 18:05:16
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -75,7 +75,6 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 │   ├── 📄 backend (2).png
 │   ├── 📄 backend (3).png
 │   ├── 📄 backend (4).png
-│   ├── 📄 backend (5).png
 │   ├── 📄 backend (6).png
 │   ├── 📄 backend (7).png
 │   ├── 📄 backend (8).png
@@ -85,7 +84,7 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 ```
 ## 🖼️ Imagens do Projeto
 
-Aqui estão **12** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:
+Aqui estão **11** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:
 
 | Demonstração | Demonstração |
 |---|---|
@@ -101,16 +100,16 @@ Aqui estão **12** telas do **Porto Seguro da Sorte** contidas na pasta `imagens
 | **Tela 5** | **Tela 6** |
 |
 
-| <img src="./imagens/backend (4).png" alt="Tela 7" width="400"/> | <img src="./imagens/backend (5).png" alt="Tela 8" width="400"/> |
+| <img src="./imagens/backend (4).png" alt="Tela 7" width="400"/> | <img src="./imagens/backend (6).png" alt="Tela 8" width="400"/> |
 | **Tela 7** | **Tela 8** |
 |
 
-| <img src="./imagens/backend (6).png" alt="Tela 9" width="400"/> | <img src="./imagens/backend (7).png" alt="Tela 10" width="400"/> |
+| <img src="./imagens/backend (7).png" alt="Tela 9" width="400"/> | <img src="./imagens/backend (8).png" alt="Tela 10" width="400"/> |
 | **Tela 9** | **Tela 10** |
 |
 
-| <img src="./imagens/backend (8).png" alt="Tela 11" width="400"/> | <img src="./imagens/backend (9).png" alt="Tela 12" width="400"/> |
-| **Tela 11** | **Tela 12** |
+| <img src="./imagens/backend (9).png" alt="Tela 11" width="400"/> |   |
+| **Tela 11** |   |
 |
 
 
