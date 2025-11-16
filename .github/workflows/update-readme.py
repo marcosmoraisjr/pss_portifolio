@@ -17,8 +17,8 @@ VERSAO_FILE = os.path.join(README_DIR, "versao.txt")
 DOCS_DIR = os.path.join(BASE_DIR, "documentos")
 os.makedirs(DOCS_DIR, exist_ok=True)
 
-IMAGENS_DIR = os.path.join(BASE_DIR, "imagens") # NOVO: Caminho para a pasta 'imagens'
-IMAGEM_EXTENSOES = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".bmp", ".tiff"} # Extensões de imagem
+IMAGENS_DIR = os.path.join(BASE_DIR, "imagens")
+IMAGEM_EXTENSOES = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".bmp", ".tiff"}
 
 DOCS_REPOS_FILE = os.path.join(DOCS_DIR, "repositorios.md")
 
@@ -61,8 +61,7 @@ def obter_data_hora_brasilia() -> str:
 # -------------------- Processamento de Imagens --------------------
 def coletar_imagens(path_dir: str) -> list[str]:
     """
-    Lista todos os arquivos de imagem (extensões definidas em IMAGEM_EXTENSOES)
-    diretamente na pasta.
+    Lista todos os arquivos de imagem diretamente na pasta 'imagens/'.
     """
     if not os.path.exists(path_dir) or not os.path.isdir(path_dir):
         return []
@@ -72,60 +71,64 @@ def coletar_imagens(path_dir: str) -> list[str]:
         for item in os.listdir(path_dir):
             caminho_item = os.path.join(path_dir, item)
             if os.path.isfile(caminho_item):
-                name, ext = os.path.splitext(item)
-                if ext.lower() in IMAGEM_EXTENSOES:
+                ext = os.path.splitext(item)[1].lower()
+                if ext in IMAGEM_EXTENSOES:
                     imagens.append(item)
     except (FileNotFoundError, PermissionError):
         pass
 
     return sorted(imagens)
 
-def montar_secao_imagens(imagens: list[str]) -> str:
+def montar_tabela_imagens(imagens: list[str]) -> str:
     """
-    Gera a seção de imagens para o README.md, incluindo o nome, a contagem
-    e a listagem com referências ABNT simuladas.
+    Gera a seção de demonstração em formato de tabela (2 colunas) para o README.md,
+    com miniaturas no cabeçalho.
     """
-    linhas = []
-
     if not imagens:
         return ""
 
+    linhas = []
     num_imagens = len(imagens)
     
     # Título e explicação
     linhas.append("## 🖼️ Imagens do Projeto\n")
-    linhas.append(f"A pasta **`imagens/`** contém **{num_imagens}** imagem(ns) de apoio, ilustrações ou diagramas do projeto.\n")
+    linhas.append(f"Aqui estão **{num_imagens}** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:\n")
+
+    colunas = 2
     
-    # Listagem de Imagens
-    for i, nome_imagem in enumerate(imagens):
-        # Caminho relativo para a imagem no README
-        caminho_relativo = f"imagens/{nome_imagem}"
+    for i in range(0, num_imagens, colunas):
+        row_imagens = imagens[i : i + colunas]
         
-        # Referência ABNT simulada (simples)
-        # Exemplo: Figura 1. Nome da Imagem (Fonte: O AUTOR/OS AUTORES).
-        # Usaremos o nome do arquivo (sem extensão) como descrição, ou a própria referência
-        nome_base = os.path.splitext(nome_imagem)[0].replace('-', ' ').replace('_', ' ').title()
+        # 1. LINHA DO CABEÇALHO (Número da Tela e Miniatura - 150px)
+        titulos = []
+        for j, nome_imagem in enumerate(row_imagens):
+            indice = i + j + 1
+            caminho_relativo = f"./imagens/{nome_imagem}"
+            # Usa o nome da tela e a miniatura (150px)
+            titulos.append(f'Tela {indice} <br> <img src="{caminho_relativo}" width="150"/>')
         
-        # Inclusão da imagem no Markdown
-        linhas.append(f"### Figura {i+1}. {nome_base}")
-        # O link faz a imagem ser renderizada, e o alt text serve como legenda
-        linhas.append(f"![{nome_base}]({caminho_relativo})\n") 
+        linhas.append(f"| {' | '.join(titulos)} |")
         
-        # Referência (simulação ABNT)
-        linhas.append(f"> **Fonte:** O AUTOR/OS AUTORES. **Título:** {nome_base}. **Tipo:** Imagem, {os.path.splitext(nome_imagem)[1].upper()}. Disponível em: `/{caminho_relativo}`.")
+        # 2. SEPARADOR DO CABEÇALHO
+        linhas.append(f"| {'--------|' * len(row_imagens)} |")
         
-        linhas.append("\n---\n") # Separador entre imagens
+        # 3. LINHA DAS IMAGENS (Demonstração Completa - 400px)
+        img_tags = []
+        for nome_imagem in row_imagens:
+            caminho_relativo = f"./imagens/{nome_imagem}"
+            img_tags.append(f'<img src="{caminho_relativo}" width="400"/>')
+            
+        # Preenche com colunas vazias se a última linha não for completa
+        while len(img_tags) < colunas:
+            img_tags.append(" ") 
+            
+        linhas.append(f"| {' | '.join(img_tags)} |")
 
-    # Remove o último separador
-    if linhas and linhas[-1] == "\n---\n":
-        linhas.pop()
-
-    linhas.append("\n") # Linha em branco após a seção
+    linhas.append("\n---\n") # Separador após a seção
     return "\n".join(linhas)
 
-# -------------------- Utilitários (demais funções omitidas para brevidade, mas devem ser mantidas) --------------------
-# ... (Manter as funções ler_url_de_arquivo, ler_descricao_sidecar, extrair_equipe_projeto_do_nome, coletar_repositorios_de_documentos)
-# ... (Manter as funções gerar_arvore, montar_tabela_repositorios, salvar_repositorios_em_documentos)
+# -------------------- Utilitários --------------------
+URL_LINE_RE = re.compile(r"^\s*URL\s*=\s*(?P<url>.+?)\s*$", re.IGNORECASE)
 
 def gerar_arvore(path, ignorar=None, prefixo="", is_root=True, nome_raiz=None):
     ignorar = set(ignorar) if ignorar else set()
@@ -187,9 +190,9 @@ def gerar_arvore(path, ignorar=None, prefixo="", is_root=True, nome_raiz=None):
 
     return "\n".join(linhas)
 
+
 def ler_url_de_arquivo(path_url: str) -> str | None:
     """Lê o conteúdo de um .url (formato InternetShortcut) e retorna o valor após 'URL='."""
-    URL_LINE_RE = re.compile(r"^\s*URL\s*=\s*(?P<url>.+?)\s*$", re.IGNORECASE)
     try:
         with open(path_url, "r", encoding="utf-8") as f:
             for line in f:
@@ -203,7 +206,6 @@ def ler_url_de_arquivo(path_url: str) -> str | None:
 def ler_descricao_sidecar(stem: str) -> str:
     """
     Busca descrição em arquivos 'stem.desc.md' ou 'stem.desc.txt' dentro de documentos/.
-    Retorna string (pode ser vazia).
     """
     candidatos = [
         os.path.join(DOCS_DIR, f"{stem}.desc.md"),
@@ -220,29 +222,18 @@ def ler_descricao_sidecar(stem: str) -> str:
 
 def extrair_equipe_projeto_do_nome(stem: str) -> tuple[str, str]:
     """
-    Padrões aceitos (recomendado para automação):
-      - 'Equipe 0X - Nome – Back-End'
-      - 'Equipe 0y — Nome – Front-End'
-    Regras:
-      - Primeiro separador: '-' ou '—' (hífen ou travessão) entre Equipe e Projeto
-      - O restante é o título do Projeto
-    Fallback: equipe='' e projeto=stem
+    Extrai Equipe e Projeto do nome do arquivo.
     """
-    # tenta "Equipe X - <Projeto>"
     m = re.match(r"^\s*(Equipe\s+\d+)\s*[-—]\s*(.+)\s*$", stem, flags=re.IGNORECASE)
     if m:
-        equipe = m.group(1).strip().title()  # "Equipe 0X"
+        equipe = m.group(1).strip().title()
         projeto = m.group(2).strip()
         return (equipe, projeto)
-    # fallback
     return ("", stem.strip())
 
 def coletar_repositorios_de_documentos() -> list[dict]:
     """
-    Vasculha 'documentos/' por arquivos .url e monta a lista de repositórios:
-      { equipe, projeto, descricao, url, slug }
-    - slug = nome-base do arquivo .url
-    - descricao: textos de 'slug.desc.md' ou 'slug.desc.txt' (se existir)
+    Vasculha 'documentos/' por arquivos .url e monta a lista de repositórios.
     """
     repos = []
     try:
@@ -273,15 +264,13 @@ def coletar_repositorios_de_documentos() -> list[dict]:
     except FileNotFoundError:
         pass
 
-    # Ordenação estável: Equipe (quando houver), depois Projeto
     repos.sort(key=lambda r: (r["equipe"] or "ZZZ", r["projeto"].lower()))
     return repos
 
+# -------------------- Sumário (README) e página em documentos --------------------
 def montar_tabela_repositorios(repos: list[dict]) -> str:
     """
-    Gera markdown da seção:
-    - Explica que é automático a partir de arquivos .url em /documentos
-    - Tabela com colunas: Equipe | Projeto | Descrição | Repositório
+    Gera markdown da seção de sumário de repositórios.
     """
     linhas = []
     linhas.append("## 📚 Sumário dos Repositórios Técnicos\n")
@@ -307,7 +296,7 @@ def montar_tabela_repositorios(repos: list[dict]) -> str:
 
 def salvar_repositorios_em_documentos(repos: list[dict], destino_md: str):
     """
-    Gera 'documentos/repositorios.md' com a mesma lógica (útil para navegação local).
+    Gera 'documentos/repositorios.md' com a mesma lógica.
     """
     linhas = []
     linhas.append("# 📚 Repositórios Técnicos — Links Externos\n")
@@ -322,7 +311,7 @@ def salvar_repositorios_em_documentos(repos: list[dict], destino_md: str):
             if r["descricao"]:
                 linhas.append(f"  - {r['descricao'].strip()}")
             linhas.append(f"  - Repositório: <{r['url']}>")
-            linhas.append("")  # linha em branco
+            linhas.append("")
 
     with open(destino_md, "w", encoding="utf-8") as f:
         f.write("\n".join(linhas).rstrip() + "\n")
@@ -330,9 +319,7 @@ def salvar_repositorios_em_documentos(repos: list[dict], destino_md: str):
 # -------------------- README --------------------
 def atualizar_readme():
     """
-    Versão:
-    - Se não existir versao.txt -> salva 1 (primeira execução).
-    - Se existir -> incrementa +1.
+    Incrementa a versão e coordena a geração do README e repositorios.md.
     """
     versao_atual = ler_versao()
     if versao_atual is None:
@@ -346,16 +333,17 @@ def atualizar_readme():
     repos = coletar_repositorios_de_documentos()
     
     # 2) Coleta imagens
-    imagens = coletar_imagens(IMAGENS_DIR) # NOVO: Coleta a lista de imagens
+    imagens = coletar_imagens(IMAGENS_DIR) 
 
     # 3) Gera/atualiza documentos/repositorios.md
     salvar_repositorios_em_documentos(repos, DOCS_REPOS_FILE)
 
     # 4) Atualiza README
-    gerar_readme(nova_versao, data_hora, repos, imagens) # NOVO: Passa a lista de imagens
+    gerar_readme(nova_versao, data_hora, repos, imagens)
 
 def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
     with open(README_FILE, "w", encoding="utf-8") as readme:
+        # Seção 1: Cabeçalho e Informações Básicas
         readme.write("# Bem-vindo ao 🍀**Porto Seguro da Sorte**\n\n")
         readme.write(
             "O Porto Seguro da Sorte é uma plataforma digital voltada para a organização e participação em rifas online,"
@@ -375,6 +363,7 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write(f"Responsável..........: Marcos Morais\n")
         readme.write("```\n")
 
+        # Seção 2: Participantes
         readme.write("## 👥 Participantes\n\n")
         readme.write("<table style='width:100%'>\n")
         readme.write("<thead><tr>")
@@ -394,6 +383,7 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         )
         readme.write("</tbody>\n</table>\n\n")
 
+        # Seção 3: Tecnologias
         readme.write("## 🧩 Tecnologias Utilizadas\n\n")
         readme.write("<p align='left'>\n")
         readme.write("  <img src='https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white' alt='Figma' />\n")
@@ -405,32 +395,33 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write("  <img src='https://img.shields.io/badge/drf--yasg-Swagger_Integration-6DB33F?logo=swagger&logoColor=white' alt='drf-yasg' />\n")
         readme.write("</p>\n\n")
 
-        # ==== SEÇÃO DE IMAGENS (NOVO) ====
-        # Esta seção será inserida antes da seção de Repositórios/Sumário
-        # pois muitas vezes as imagens são mais relevantes no início.
-        readme.write(montar_secao_imagens(imagens_from_dir))
-        readme.write("--- \n\n") # Separador visual
-
-        # ==== SEÇÃO: Sumário dos Repositórios (automática via .url) ====
+        # Seção 4: Sumário dos Repositórios
         readme.write(montar_tabela_repositorios(repos_from_docs))
         readme.write("\n")
         readme.write(
             f"🔗 Consulte também: [`documentos/{os.path.basename(DOCS_REPOS_FILE)}`](./documentos/{os.path.basename(DOCS_REPOS_FILE)}) para a lista de links externos.\n\n"
         )
 
+        # Seção 5: Documentos
         readme.write("## 📂 Documentos\n\n")
         readme.write("```\n")
         readme.write(gerar_arvore(DOCS_DIR, OCULTA_DIR))
         readme.write("\n```\n")
 
+        # Seção 6: Estrutura do Repositório
         readme.write("## 🌳 Estrutura do Repositório\n\n")
         readme.write("```\n")
         readme.write(gerar_arvore(BASE_DIR, OCULTA_DIR))
         readme.write("\n```\n")
 
+        # Seção 7: IMAGENS DO PROJETO (Nova Posição)
+        readme.write(montar_tabela_imagens(imagens_from_dir))
+
+        # Seção 8: Licença
         readme.write("## 📜 Licença\n\n")
         readme.write("Este projeto está licenciado sob os termos do arquivo [LICENSE](./documentos/LICENSE).\n\n")
 
+        # Seção 9: Agradecimentos
         readme.write("## 🤝 Agradecimentos\n\n")
         readme.write("Contribuições, sugestões e feedbacks são muito bem-vindos! Caso tenha algum comentário ou queira contribuir com o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.\n\n")
         readme.write("--- \n\n")
