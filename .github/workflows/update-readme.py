@@ -462,7 +462,7 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write("## 🤝 Agradecimentos\n\n")
         readme.write("Contribuições, sugestões e feedbacks são muito bem-vindos! Caso tenha algum comentário ou queira contribuir com o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.\n\n")
         readme.write("--- \n\n")
-        readme.write("Desenvolvido com ❤️ pela de [Marcos Morais](https://www.linkedin.com/in/marcosmoraisjr/) \n\n")
+        readme.write("Desenvolvido com ❤️ pela equipe de [Marcos Morais](https://www.linkedin.com/in/marcosmoraisjr/) \n\n")
 
 # -------------------- Main --------------------
 if __name__ == "__main__":
