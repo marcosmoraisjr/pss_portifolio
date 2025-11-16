@@ -3,7 +3,7 @@ import os
 import re
 from datetime import datetime
 import pytz
-from PIL import Image # NECESSÁRIO INSTALAR: pip install Pillow
+from PIL import Image
 
 # Caminho base: raiz do repositório
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
@@ -469,7 +469,6 @@ if __name__ == "__main__":
     try:
         atualizar_readme()
     except ImportError:
-        # Este erro será capturado se a instalação no YAML falhar
         print("Erro: A biblioteca Pillow (PIL) não está instalada. Execute 'pip install Pillow' para habilitar o redimensionamento de imagens.")
     except Exception as e:
         print(f"Ocorreu um erro durante a atualização do README: {e}")
