@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 15 (AUTO-INCREMENTO)
-Data de Atualização..: 16/11/2025 18:06:21
+Versão...............: 16 (AUTO-INCREMENTO)
+Data de Atualização..: 16/11/2025 18:12:26
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -87,26 +87,11 @@ Aqui estão **10** telas do **Porto Seguro da Sorte** contidas na pasta `imagens
 
 | Demonstração | Demonstração |
 |---|---|
-| <img src="./imagens/backend (1).png" alt="Tela 1" width="400"/> | <img src="./imagens/backend (10).png" alt="Tela 2" width="400"/> |
-| **Tela 1** | **Tela 2** |
-|
-
-| <img src="./imagens/backend (11).png" alt="Tela 3" width="400"/> | <img src="./imagens/backend (12).png" alt="Tela 4" width="400"/> |
-| **Tela 3** | **Tela 4** |
-|
-
-| <img src="./imagens/backend (2).png" alt="Tela 5" width="400"/> | <img src="./imagens/backend (3).png" alt="Tela 6" width="400"/> |
-| **Tela 5** | **Tela 6** |
-|
-
-| <img src="./imagens/backend (6).png" alt="Tela 7" width="400"/> | <img src="./imagens/backend (7).png" alt="Tela 8" width="400"/> |
-| **Tela 7** | **Tela 8** |
-|
-
-| <img src="./imagens/backend (8).png" alt="Tela 9" width="400"/> | <img src="./imagens/backend (9).png" alt="Tela 10" width="400"/> |
-| **Tela 9** | **Tela 10** |
-|
-
+| **Tela 1**<br><img src="./imagens/backend (1).png" alt="Tela 1" width="400"/> | **Tela 2**<br><img src="./imagens/backend (10).png" alt="Tela 2" width="400"/> |
+| **Tela 3**<br><img src="./imagens/backend (11).png" alt="Tela 3" width="400"/> | **Tela 4**<br><img src="./imagens/backend (12).png" alt="Tela 4" width="400"/> |
+| **Tela 5**<br><img src="./imagens/backend (2).png" alt="Tela 5" width="400"/> | **Tela 6**<br><img src="./imagens/backend (3).png" alt="Tela 6" width="400"/> |
+| **Tela 7**<br><img src="./imagens/backend (6).png" alt="Tela 7" width="400"/> | **Tela 8**<br><img src="./imagens/backend (7).png" alt="Tela 8" width="400"/> |
+| **Tela 9**<br><img src="./imagens/backend (8).png" alt="Tela 9" width="400"/> | **Tela 10**<br><img src="./imagens/backend (9).png" alt="Tela 10" width="400"/> |
 
 ---
 ## 📜 Licença
