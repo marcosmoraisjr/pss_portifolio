@@ -121,6 +121,7 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
     """
     Gera a seção de demonstração em formato de tabela (2 colunas) para o README.md.
     Cada imagem é exibida UMA ÚNICA VEZ com largura de 400px.
+    A numeração da tela é embutida na célula para estabilidade da formatação.
     """
     if not imagens:
         return ""
@@ -140,38 +141,26 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
     # 2. SEPARADOR DO CABEÇALHO
     linhas.append(f"|{'---|' * colunas}")
 
-    # Itera sobre a lista de 2 em 2 (garantindo 6 iterações para 12 imagens)
+    # Itera sobre a lista de 2 em 2
     for i in range(0, num_imagens, colunas):
         row_imagens = imagens[i : i + colunas]
         
-        # --- LINHA 1: IMAGENS (Tags <img>) ---
+        # --- LINHA ÚNICA: IMAGENS + NUMERAÇÃO (Tags <img>) ---
         img_tags = []
         for j, nome_imagem in enumerate(row_imagens):
             indice = i + j + 1
             caminho_relativo = f"./imagens/{nome_imagem}"
             
-            # Exibe a imagem UMA ÚNICA VEZ com largura de 400px
-            img_tags.append(f'<img src="{caminho_relativo}" alt="Tela {indice}" width="400"/>')
+            # Formato Estável: Numeração e imagem na mesma célula
+            img_tags.append(f'**Tela {indice}**<br><img src="{caminho_relativo}" alt="Tela {indice}" width="400"/>')
             
         # Preenche com colunas vazias se a última linha não for completa
         while len(img_tags) < colunas:
             img_tags.append(" ") 
             
+        # Adiciona a linha ao conteúdo da tabela
         linhas.append(f"| {' | '.join(img_tags)} |")
         
-        # --- LINHA 2: NUMERAÇÃO (Facilita a referência) ---
-        numeracao = []
-        for k in range(len(row_imagens)):
-             # Usa negrito para destacar a numeração da tela
-             numeracao.append(f"**Tela {i + k + 1}**")
-        while len(numeracao) < colunas:
-             numeracao.append(" ")
-             
-        linhas.append(f"| {' | '.join(numeracao)} |")
-        
-        # Adiciona uma linha vazia de Markdown para espaçamento visual entre os grupos de imagens
-        linhas.append("|\n") 
-
     linhas.append("\n---\n") # Separador após a seção
     return "\n".join(linhas)
 
@@ -462,7 +451,7 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write(gerar_arvore(BASE_DIR, OCULTA_DIR))
         readme.write("\n```\n")
 
-        # Seção 7: IMAGENS DO PROJETO (Tabela Corrigida)
+        # Seção 7: IMAGENS DO PROJETO (Tabela Corrigida e Estável)
         readme.write(montar_tabela_imagens(imagens_from_dir))
 
         # Seção 8: Licença
@@ -480,6 +469,7 @@ if __name__ == "__main__":
     try:
         atualizar_readme()
     except ImportError:
+        # Este erro será capturado se a instalação no YAML falhar
         print("Erro: A biblioteca Pillow (PIL) não está instalada. Execute 'pip install Pillow' para habilitar o redimensionamento de imagens.")
     except Exception as e:
         print(f"Ocorreu um erro durante a atualização do README: {e}")
