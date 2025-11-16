@@ -134,18 +134,17 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
     colunas = 2
     
     # 1. CABEÇALHO DA TABELA (Texto descritivo)
-    cabecalho_numeros = []
-    for i in range(1, colunas + 1): 
-        # Adiciona um marcador de coluna genérico para garantir a estrutura
-        cabecalho_numeros.append("Demonstração")
-    linhas.append(f"| {' | '.join(cabecalho_numeros)} |")
+    cabecalho_descritivo = ["Demonstração"] * colunas
+    linhas.append(f"| {' | '.join(cabecalho_descritivo)} |")
     
     # 2. SEPARADOR DO CABEÇALHO
     linhas.append(f"|{'---|' * colunas}")
 
+    # Itera sobre a lista de 2 em 2 (garantindo 6 iterações para 12 imagens)
     for i in range(0, num_imagens, colunas):
         row_imagens = imagens[i : i + colunas]
         
+        # --- LINHA 1: IMAGENS (Tags <img>) ---
         img_tags = []
         for j, nome_imagem in enumerate(row_imagens):
             indice = i + j + 1
@@ -158,19 +157,20 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
         while len(img_tags) < colunas:
             img_tags.append(" ") 
             
-        # 3. LINHA DE CONTEÚDO (Imagens)
         linhas.append(f"| {' | '.join(img_tags)} |")
         
-        # Adiciona uma linha com a numeração das telas abaixo das imagens (opcional, para melhor clareza visual)
+        # --- LINHA 2: NUMERAÇÃO (Facilita a referência) ---
         numeracao = []
         for k in range(len(row_imagens)):
+             # Usa negrito para destacar a numeração da tela
              numeracao.append(f"**Tela {i + k + 1}**")
         while len(numeracao) < colunas:
              numeracao.append(" ")
+             
         linhas.append(f"| {' | '.join(numeracao)} |")
         
-        linhas.append("|\n") # Linha vazia para quebrar visualmente os grupos de 2 imagens
-        
+        # Adiciona uma linha vazia de Markdown para espaçamento visual entre os grupos de imagens
+        linhas.append("|\n") 
 
     linhas.append("\n---\n") # Separador após a seção
     return "\n".join(linhas)
@@ -462,7 +462,7 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write(gerar_arvore(BASE_DIR, OCULTA_DIR))
         readme.write("\n```\n")
 
-        # Seção 7: IMAGENS DO PROJETO (Nova Posição e Formato)
+        # Seção 7: IMAGENS DO PROJETO (Tabela Corrigida)
         readme.write(montar_tabela_imagens(imagens_from_dir))
 
         # Seção 8: Licença
