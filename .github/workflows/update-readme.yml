@@ -34,9 +34,10 @@ jobs:
           sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
           sudo dpkg-reconfigure -f noninteractive tzdata
 
-      # Passo 4: Instalar dependências necessárias para o script
-      - name: Instalar pytz
-        run: pip install pytz
+      # Passo 4: Instalar dependências necessárias para o script (Pillow e pytz)
+      - name: Instalar dependências (Pillow e pytz)
+        # CORREÇÃO: Pillow adicionado aqui
+        run: pip install Pillow pytz
 
       # Passo 5: Executar o script Python
       - name: Executar update-readme.py
