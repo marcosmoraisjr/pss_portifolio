@@ -99,7 +99,7 @@ def coletar_imagens(path_dir: str) -> list[str]:
     imagens = []
     try:
         for item in os.listdir(path_dir):
-            # NOVO FILTRO: Ignora arquivos ocultos ou de cache do sistema (começam com '.')
+            # Filtro: Ignora arquivos ocultos ou de cache do sistema (começam com '.')
             if item.startswith('.'):
                 continue
             
@@ -119,8 +119,8 @@ def coletar_imagens(path_dir: str) -> list[str]:
 
 def montar_tabela_imagens(imagens: list[str]) -> str:
     """
-    Gera a seção de demonstração em formato de tabela (2 colunas) para o README.md,
-    com miniaturas de 150px no cabeçalho e demonstração de 400px no conteúdo.
+    Gera a seção de demonstração em formato de tabela (2 colunas) para o README.md.
+    Cada imagem é exibida UMA ÚNICA VEZ com largura de 400px.
     """
     if not imagens:
         return ""
@@ -128,46 +128,51 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
     linhas = []
     num_imagens = len(imagens)
     
-    # Título e explicação (Nota sobre a contagem de tags <img>)
     linhas.append("## 🖼️ Imagens do Projeto\n")
-    linhas.append(f"Aqui estão **{num_imagens}** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`.")
-    linhas.append(f"*(A tabela exibe uma miniatura de 150px no cabeçalho e a demonstração completa de 400px logo abaixo.)*\n")
+    linhas.append(f"Aqui estão **{num_imagens}** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:\n")
 
     colunas = 2
     
-    # O laço garante Linhas = ceil(num_imagens / 2)
+    # 1. CABEÇALHO DA TABELA (Texto descritivo)
+    cabecalho_numeros = []
+    for i in range(1, colunas + 1): 
+        # Adiciona um marcador de coluna genérico para garantir a estrutura
+        cabecalho_numeros.append("Demonstração")
+    linhas.append(f"| {' | '.join(cabecalho_numeros)} |")
+    
+    # 2. SEPARADOR DO CABEÇALHO
+    linhas.append(f"|{'---|' * colunas}")
+
     for i in range(0, num_imagens, colunas):
         row_imagens = imagens[i : i + colunas]
         
-        # 1. LINHA DO CABEÇALHO (Número da Tela e Miniatura - 150px)
-        titulos = []
+        img_tags = []
         for j, nome_imagem in enumerate(row_imagens):
             indice = i + j + 1
             caminho_relativo = f"./imagens/{nome_imagem}"
-            titulos.append(f'Tela {indice} <br> <img src="{caminho_relativo}" width="150"/>')
-        
-        linhas.append(f"| {' | '.join(titulos)} |")
-        
-        # 2. SEPARADOR DO CABEÇALHO
-        separadores = ['--------'] * len(row_imagens) 
-        linhas.append(f"| {' | '.join(separadores)} |")
-        
-        # 3. LINHA DAS IMAGENS (Demonstração Completa - 400px)
-        img_tags = []
-        for nome_imagem in row_imagens:
-            caminho_relativo = f"./imagens/{nome_imagem}"
-            img_tags.append(f'<img src="{caminho_relativo}" width="400"/>')
+            
+            # Exibe a imagem UMA ÚNICA VEZ com largura de 400px
+            img_tags.append(f'<img src="{caminho_relativo}" alt="Tela {indice}" width="400"/>')
             
         # Preenche com colunas vazias se a última linha não for completa
         while len(img_tags) < colunas:
             img_tags.append(" ") 
             
+        # 3. LINHA DE CONTEÚDO (Imagens)
         linhas.append(f"| {' | '.join(img_tags)} |")
         
-        # Adiciona uma linha em branco para melhor renderização do Markdown/GitHub
-        linhas.append("|\n") 
+        # Adiciona uma linha com a numeração das telas abaixo das imagens (opcional, para melhor clareza visual)
+        numeracao = []
+        for k in range(len(row_imagens)):
+             numeracao.append(f"**Tela {i + k + 1}**")
+        while len(numeracao) < colunas:
+             numeracao.append(" ")
+        linhas.append(f"| {' | '.join(numeracao)} |")
+        
+        linhas.append("|\n") # Linha vazia para quebrar visualmente os grupos de 2 imagens
+        
 
-    linhas.append("\n---\n")
+    linhas.append("\n---\n") # Separador após a seção
     return "\n".join(linhas)
 
 # -------------------- Utilitários --------------------
@@ -377,11 +382,6 @@ def atualizar_readme():
     
     # 2) Coleta e REDIMENSIONA imagens
     imagens = coletar_imagens(IMAGENS_DIR) 
-
-    # --- DEBUG START ---
-    # É altamente recomendado manter este print para verificar a contagem nos logs do GitHub Actions.
-    print(f"DEBUG: Contagem final de imagens na lista: {len(imagens)}")
-    # --- DEBUG END ---
 
     # 3) Gera/atualiza documentos/repositorios.md
     salvar_repositorios_em_documentos(repos, DOCS_REPOS_FILE)
