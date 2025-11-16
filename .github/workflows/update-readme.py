@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 from PIL import Image # NECESSÁRIO INSTALAR: pip install Pillow
 
-# Caminho base: raiz do repositório (2 níveis acima, pois o script está em .github/workflows)
+# Caminho base: raiz do repositório
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 
 # ===== Configuração do destino =====
@@ -23,7 +23,7 @@ IMAGEM_EXTENSOES = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".bmp", ".tiff"}
 
 DOCS_REPOS_FILE = os.path.join(DOCS_DIR, "repositorios.md")
 
-# LIMITE MÁXIMO DE LARGURA PARA REDIMENSIONAMENTO
+# LIMITE MÁXIMO DE LARGURA PARA REDIMENSIONAMENTO (800px)
 MAX_LARGURA = 800
 
 # Extensões e diretórios que devem ser ocultados na árvore
@@ -73,18 +73,12 @@ def redimensionar_imagem_se_necessario(caminho_imagem: str, max_largura: int):
             largura, altura = img.size
             
             if largura > max_largura:
-                # Calcula a nova altura para manter a proporção
                 nova_altura = int((max_largura / largura) * altura)
                 nova_dimensao = (max_largura, nova_altura)
                 
-                # Redimensiona e salva
                 img = img.resize(nova_dimensao, Image.Resampling.LANCZOS)
                 
-                # PNG pode exigir salvar o modo RGBA
-                if img.mode == 'RGBA':
-                    img.save(caminho_imagem, quality=90, optimize=True)
-                else:
-                    img.save(caminho_imagem, quality=90, optimize=True)
+                img.save(caminho_imagem, quality=90, optimize=True)
 
                 print(f"Redimensionado: {os.path.basename(caminho_imagem)} de {largura}px para {max_largura}px.")
                 return True
@@ -96,7 +90,8 @@ def redimensionar_imagem_se_necessario(caminho_imagem: str, max_largura: int):
 
 def coletar_imagens(path_dir: str) -> list[str]:
     """
-    Lista todos os arquivos de imagem na pasta 'imagens/' e redimensiona-os se necessário.
+    Lista todos os arquivos de imagem na pasta 'imagens/', ignorando arquivos ocultos,
+    e redimensiona-os se necessário.
     """
     if not os.path.exists(path_dir) or not os.path.isdir(path_dir):
         return []
@@ -104,13 +99,16 @@ def coletar_imagens(path_dir: str) -> list[str]:
     imagens = []
     try:
         for item in os.listdir(path_dir):
+            # NOVO FILTRO: Ignora arquivos ocultos ou de cache do sistema (começam com '.')
+            if item.startswith('.'):
+                continue
+            
             caminho_item = os.path.join(path_dir, item)
             
             if os.path.isfile(caminho_item):
                 ext = os.path.splitext(item)[1].lower()
                 
                 if ext in IMAGEM_EXTENSOES:
-                    # Tenta redimensionar (se for maior que 800px)
                     redimensionar_imagem_se_necessario(caminho_item, MAX_LARGURA)
                     imagens.append(item)
                     
@@ -122,7 +120,7 @@ def coletar_imagens(path_dir: str) -> list[str]:
 def montar_tabela_imagens(imagens: list[str]) -> str:
     """
     Gera a seção de demonstração em formato de tabela (2 colunas) para o README.md,
-    com miniaturas de 150px e demonstração de 400px.
+    com miniaturas de 150px no cabeçalho e demonstração de 400px no conteúdo.
     """
     if not imagens:
         return ""
@@ -130,12 +128,14 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
     linhas = []
     num_imagens = len(imagens)
     
-    # Título e explicação
+    # Título e explicação (Nota sobre a contagem de tags <img>)
     linhas.append("## 🖼️ Imagens do Projeto\n")
-    linhas.append(f"Aqui estão **{num_imagens}** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`:\n")
+    linhas.append(f"Aqui estão **{num_imagens}** telas do **Porto Seguro da Sorte** contidas na pasta `imagens/`.")
+    linhas.append(f"*(A tabela exibe uma miniatura de 150px no cabeçalho e a demonstração completa de 400px logo abaixo.)*\n")
 
     colunas = 2
     
+    # O laço garante Linhas = ceil(num_imagens / 2)
     for i in range(0, num_imagens, colunas):
         row_imagens = imagens[i : i + colunas]
         
@@ -144,19 +144,18 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
         for j, nome_imagem in enumerate(row_imagens):
             indice = i + j + 1
             caminho_relativo = f"./imagens/{nome_imagem}"
-            # Miniatura (150px)
             titulos.append(f'Tela {indice} <br> <img src="{caminho_relativo}" width="150"/>')
         
         linhas.append(f"| {' | '.join(titulos)} |")
         
         # 2. SEPARADOR DO CABEÇALHO
-        linhas.append(f"| {'--------|' * len(row_imagens)} |")
+        separadores = ['--------'] * len(row_imagens) 
+        linhas.append(f"| {' | '.join(separadores)} |")
         
         # 3. LINHA DAS IMAGENS (Demonstração Completa - 400px)
         img_tags = []
         for nome_imagem in row_imagens:
             caminho_relativo = f"./imagens/{nome_imagem}"
-            # Demonstração (400px)
             img_tags.append(f'<img src="{caminho_relativo}" width="400"/>')
             
         # Preenche com colunas vazias se a última linha não for completa
@@ -164,11 +163,14 @@ def montar_tabela_imagens(imagens: list[str]) -> str:
             img_tags.append(" ") 
             
         linhas.append(f"| {' | '.join(img_tags)} |")
+        
+        # Adiciona uma linha em branco para melhor renderização do Markdown/GitHub
+        linhas.append("|\n") 
 
-    linhas.append("\n---\n") # Separador após a seção
+    linhas.append("\n---\n")
     return "\n".join(linhas)
 
-# -------------------- Utilitários (demais funções mantidas) --------------------
+# -------------------- Utilitários --------------------
 URL_LINE_RE = re.compile(r"^\s*URL\s*=\s*(?P<url>.+?)\s*$", re.IGNORECASE)
 
 def gerar_arvore(path, ignorar=None, prefixo="", is_root=True, nome_raiz=None):
@@ -376,6 +378,11 @@ def atualizar_readme():
     # 2) Coleta e REDIMENSIONA imagens
     imagens = coletar_imagens(IMAGENS_DIR) 
 
+    # --- DEBUG START ---
+    # É altamente recomendado manter este print para verificar a contagem nos logs do GitHub Actions.
+    print(f"DEBUG: Contagem final de imagens na lista: {len(imagens)}")
+    # --- DEBUG END ---
+
     # 3) Gera/atualiza documentos/repositorios.md
     salvar_repositorios_em_documentos(repos, DOCS_REPOS_FILE)
 
@@ -455,7 +462,7 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write(gerar_arvore(BASE_DIR, OCULTA_DIR))
         readme.write("\n```\n")
 
-        # Seção 7: IMAGENS DO PROJETO (Nova Posição)
+        # Seção 7: IMAGENS DO PROJETO (Nova Posição e Formato)
         readme.write(montar_tabela_imagens(imagens_from_dir))
 
         # Seção 8: Licença
@@ -470,4 +477,9 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
 
 # -------------------- Main --------------------
 if __name__ == "__main__":
-    atualizar_readme()
+    try:
+        atualizar_readme()
+    except ImportError:
+        print("Erro: A biblioteca Pillow (PIL) não está instalada. Execute 'pip install Pillow' para habilitar o redimensionamento de imagens.")
+    except Exception as e:
+        print(f"Ocorreu um erro durante a atualização do README: {e}")
