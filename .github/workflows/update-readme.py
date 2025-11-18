@@ -410,13 +410,13 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         readme.write("</tr></thead>\n")
         readme.write("<tbody>\n")
         readme.write(
-            "<tr><td>MARCOS MORAIS DE SOUSA            </td><td>Gerente de Projetos      </td><td><a href='https://www.linkedin.com/in/marcosmoraisjr/'    >LinkedIn</a> | <a href='mailto:mmstec@gmail.com'>Email</a></td></tr>\n"
+            "<tr><td>MARCOS MORAIS DE SOUSA            </td><td>Gerente de Projetos                         </td><td><a href='https://www.linkedin.com/in/marcosmoraisjr/'>LinkedIn</a> | <a href='mailto:mmstec@gmail.com'>Email</a></td></tr>\n"
         )
         readme.write(
-            "<tr><td>VINICIUS ANDRADE                </td><td>Scrum Master             </td><td><a href='https://www.linkedin.com/in/andrade/'           >LinkedIn</a> | <a href='mailto:vinigta30@gmail.com'>Email</a></td></tr>\n"
+            "<tr><td>VINICIUS ANDRADE                 </td><td>Full Stack Web Developer/Líder Técnico       </td><td><a href='https://www.linkedin.com/in/andrade787/'    >LinkedIn</a> | <a href='mailto:vinigta30@gmail.com'>Email</a></td></tr>\n"
         )
         readme.write(
-            "<tr><td>DIMITRI M. REIS DE SOUSA          </td><td>Full Stack Web Developer </td><td><a href='https://www.linkedin.com/in/dimitrimrs/'        >LinkedIn</a> | <a href='mailto:dimitrimrs@gmail.com'>Email</a></td></tr>\n"
+            "<tr><td>DIMITRI M. REIS DE SOUSA          </td><td>Full Stack Web Developer                     </td><td><a href='https://www.linkedin.com/in/dimitrimrs/'    >LinkedIn</a> | <a href='mailto:dimitrimrs@gmail.com'>Email</a></td></tr>\n"
         )
         readme.write("</tbody>\n</table>\n\n")
 
