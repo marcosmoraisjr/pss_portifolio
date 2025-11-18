@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 24 (AUTO-INCREMENTO)
-Data de Atualização..: 16/11/2025 18:28:58
+Versão...............: 25 (AUTO-INCREMENTO)
+Data de Atualização..: 18/11/2025 10:11:33
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -18,9 +18,9 @@ Responsável..........: Marcos Morais
 <table style='width:100%'>
 <thead><tr><th style='text-align:left'>Nome</th><th style='text-align:left'>Função</th><th style='text-align:left'>Contato</th></tr></thead>
 <tbody>
-<tr><td>MARCOS MORAIS DE SOUSA            </td><td>Gerente de Projetos      </td><td><a href='https://www.linkedin.com/in/marcosmoraisjr/'    >LinkedIn</a> | <a href='mailto:mmstec@gmail.com'>Email</a></td></tr>
-<tr><td>VINICIUS ANDRADE                </td><td>Scrum Master             </td><td><a href='https://www.linkedin.com/in/andrade/'           >LinkedIn</a> | <a href='mailto:vinigta30@gmail.com'>Email</a></td></tr>
-<tr><td>DIMITRI M. REIS DE SOUSA          </td><td>Full Stack Web Developer </td><td><a href='https://www.linkedin.com/in/dimitrimrs/'        >LinkedIn</a> | <a href='mailto:dimitrimrs@gmail.com'>Email</a></td></tr>
+<tr><td>MARCOS MORAIS DE SOUSA            </td><td>Gerente de Projetos                         </td><td><a href='https://www.linkedin.com/in/marcosmoraisjr/'>LinkedIn</a> | <a href='mailto:mmstec@gmail.com'>Email</a></td></tr>
+<tr><td>VINICIUS ANDRADE                 </td><td>Full Stack Web Developer/Líder Técnico       </td><td><a href='https://www.linkedin.com/in/andrade787/'    >LinkedIn</a> | <a href='mailto:vinigta30@gmail.com'>Email</a></td></tr>
+<tr><td>DIMITRI M. REIS DE SOUSA          </td><td>Full Stack Web Developer                     </td><td><a href='https://www.linkedin.com/in/dimitrimrs/'    >LinkedIn</a> | <a href='mailto:dimitrimrs@gmail.com'>Email</a></td></tr>
 </tbody>
 </table>
 
