@@ -1,6 +1,6 @@
 # .github/workflows/update-readme.yml
 
-name: Executar update-readme.py
+name: Executar update_readme.py
 
 on:
   push:
