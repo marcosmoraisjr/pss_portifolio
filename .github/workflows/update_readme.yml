@@ -1,4 +1,4 @@
-# .github/workflows/update-readme.yml
+# .github/workflows/update_readme.yml
 
 name: Executar update_readme.py
 
