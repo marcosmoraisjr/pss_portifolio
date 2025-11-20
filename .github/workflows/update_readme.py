@@ -1,4 +1,4 @@
-# .github/workflows/update-readme.py
+# .github/workflows/update_readme.py
 import os
 import re
 from datetime import datetime
