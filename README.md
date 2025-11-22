@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 30 (AUTO-INCREMENTO)
-Data de Atualização..: 22/11/2025 10:37:22
+Versão...............: 31 (AUTO-INCREMENTO)
+Data de Atualização..: 22/11/2025 10:38:24
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -45,8 +45,8 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 
 | Equipe | Projeto | Descrição | Repositório |
 |:-------|:--------|:----------|:------------|
-| — | documentação tecnica | — | [documentação tecnica](https://github.com/marcosmoraisjr/pss_backend/tree/main/documentos/1_documentacao_tecnica) |
 | — | pss_backend | — | [pss_backend](https://github.com/marcosmoraisjr/pss_backend) |
+| — | pss_documentacao_tecnica | — | [pss_documentacao_tecnica](https://github.com/marcosmoraisjr/pss_backend/tree/main/documentos/1_documentacao_tecnica) |
 | — | pss_frontend | — | [pss_frontend](https://github.com/marcosmoraisjr/pss_frontend) |
 
 🔗 Consulte também: [`documentos/repositorios.md`](./documentos/repositorios.md) para a lista de links externos.
@@ -58,8 +58,8 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 ├── 📄 Documento de Arquitetura – Sistema de Rifas Digitais.pdf
 ├── 📄 Esqueleto models.py (Django) — pronto para colar.pdf
 ├── 📄 PSS_MANUAL_DA_MARCA.pdf
-├── 📄 documentação tecnica.url
 ├── 📄 pss_backend.url
+├── 📄 pss_documentacao_tecnica.url
 ├── 📄 pss_frontend.url
 └── 📄 repositorios.md
 ```
@@ -72,8 +72,8 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 │   ├── 📄 Documento de Arquitetura – Sistema de Rifas Digitais.pdf
 │   ├── 📄 Esqueleto models.py (Django) — pronto para colar.pdf
 │   ├── 📄 PSS_MANUAL_DA_MARCA.pdf
-│   ├── 📄 documentação tecnica.url
 │   ├── 📄 pss_backend.url
+│   ├── 📄 pss_documentacao_tecnica.url
 │   ├── 📄 pss_frontend.url
 │   └── 📄 repositorios.md
 ├── 📂 imagens
