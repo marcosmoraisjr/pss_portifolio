@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 35 (AUTO-INCREMENTO)
-Data de Atualização..: 22/11/2025 11:09:17
+Versão...............: 36 (AUTO-INCREMENTO)
+Data de Atualização..: 22/11/2025 11:14:57
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
