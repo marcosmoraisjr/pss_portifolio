@@ -9,8 +9,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 32 (AUTO-INCREMENTO)
-Data de Atualização..: 22/11/2025 10:38:55
+Versão...............: 33 (AUTO-INCREMENTO)
+Data de Atualização..: 22/11/2025 10:40:35
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
@@ -56,9 +56,9 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 ```
 📂 documentos
 ├── 📄 Documento de Arquitetura – Sistema de Rifas Digitais.pdf
-├── 📄 Esqueleto models.py (Django) — pronto para colar.pdf
 ├── 📄 pss_backend.url
 ├── 📄 pss_documentacao_tecnica.url
+├── 📄 pss_esqueleto_models_django.pdf
 ├── 📄 pss_frontend.url
 ├── 📄 pss_manual_da_marca.pdf
 └── 📄 repositorios.md
@@ -70,9 +70,9 @@ O nome do arquivo define as colunas, ex.: `Equipe 0X - Campo Inteligente – Bac
 ├── 📄 README.md
 ├── 📂 documentos
 │   ├── 📄 Documento de Arquitetura – Sistema de Rifas Digitais.pdf
-│   ├── 📄 Esqueleto models.py (Django) — pronto para colar.pdf
 │   ├── 📄 pss_backend.url
 │   ├── 📄 pss_documentacao_tecnica.url
+│   ├── 📄 pss_esqueleto_models_django.pdf
 │   ├── 📄 pss_frontend.url
 │   ├── 📄 pss_manual_da_marca.pdf
 │   └── 📄 repositorios.md
