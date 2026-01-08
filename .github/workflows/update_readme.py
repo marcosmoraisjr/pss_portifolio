@@ -383,12 +383,33 @@ def gerar_readme(versao, data_hora, repos_from_docs, imagens_from_dir):
         # Seção 1: Cabeçalho e Informações Básicas
         readme.write("# Bem-vindo ao 🍀**Porto Seguro da Sorte**\n\n")
         readme.write(
-            "O Porto Seguro da Sorte é uma plataforma digital voltada para a organização e participação em rifas online,"
-            " oferecendo uma experiência prática e segura tanto para quem cria quanto para quem participa. "
-            "Com integração via WhatsApp, o sistema permite o gerenciamento completo das rifas, "
-            "desde a criação até o sorteio, com notificações automáticas, controle de pagamentos e emissão de comprovantes."
-            " A navegação é intuitiva, com foco na acessibilidade e na transparência dos processos.\n\n"
+            "## 📌 Porto Seguro da Sorte\n\n"
+            "O Porto Seguro da Sorte é uma plataforma digital desenvolvida para atender a uma demanda real "
+            "de uma empresa de rifas sediada em Porto Seguro – BA, que necessitava de uma solução online, "
+            "segura e escalável, capaz de operar em todo o território nacional.\n\n"
+        
+            "A plataforma é voltada para a organização e participação em rifas online, oferecendo uma "
+            "experiência prática, acessível e confiável tanto para organizadores quanto para participantes. "
+            "O sistema contempla todo o ciclo operacional das rifas, desde a criação até o sorteio, "
+            "com processos claros e transparentes.\n\n"
+        
+            "O sistema conta com integração à plataforma de pagamentos digitais Pagar.me, criada pela Stone, "
+            "voltada para negócios online, oferecendo soluções completas como checkout, Pix, cartão de crédito, "
+            "boleto, pagamentos recorrentes e APIs para integração. Essa integração permite o controle "
+            "automatizado dos pagamentos, a emissão de comprovantes e maior confiabilidade nas transações financeiras.\n\n"
+        
+            "### 🔑 Principais funcionalidades\n\n"
+            "- Criação e gerenciamento de rifas online\n"
+            "- Integração com gateway de pagamentos (Pix, cartão de crédito, boleto e recorrência)\n"
+            "- Controle automático de pagamentos\n"
+            "- Emissão de comprovantes\n"
+            "- Envio de notificações automáticas\n"
+            "- Processo de sorteio com foco em transparência e rastreabilidade\n\n"
+        
+            "A navegação foi projetada para ser intuitiva, com foco em acessibilidade, clareza das informações "
+            "e segurança dos dados, garantindo uma experiência consistente e confiável para todos os usuários.\n\n"
         )
+
 
         readme.write("## ℹ️ Importante \n\n")
         readme.write("ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN \n\n")
