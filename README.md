@@ -1,6 +1,6 @@
 # Bem-vindo ao 🍀**Porto Seguro da Sorte**
 
-O Porto Seguro da Sorte é uma plataforma digital voltada para a organização e participação em rifas online, oferecendo uma experiência prática e segura tanto para quem cria quanto para quem participa. Com integração via WhatsApp, o sistema permite o gerenciamento completo das rifas, desde a criação até o sorteio, com notificações automáticas, controle de pagamentos e emissão de comprovantes. A navegação é intuitiva, com foco na acessibilidade e na transparência dos processos.
+O Porto Seguro da Sorte é uma plataforma digital voltada para a organização e participação em rifas online, oferecendo uma experiência prática e segura tanto para quem cria quanto para quem participa. Com integração via pagar.me, o sistema permite o gerenciamento completo das rifas, desde a criação até o sorteio, com notificações automáticas, controle de pagamentos e emissão de comprovantes. A navegação é intuitiva, com foco na acessibilidade e na transparência dos processos.
 
 ## ℹ️ Importante 
 
