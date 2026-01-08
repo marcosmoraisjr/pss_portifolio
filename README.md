@@ -1,6 +1,23 @@
 # Bem-vindo ao 🍀**Porto Seguro da Sorte**
 
-O Porto Seguro da Sorte é uma plataforma digital voltada para a organização e participação em rifas online, oferecendo uma experiência prática e segura tanto para quem cria quanto para quem participa. Com integração via WhatsApp, o sistema permite o gerenciamento completo das rifas, desde a criação até o sorteio, com notificações automáticas, controle de pagamentos e emissão de comprovantes. A navegação é intuitiva, com foco na acessibilidade e na transparência dos processos.
+## 📌 Porto Seguro da Sorte
+
+O Porto Seguro da Sorte é uma plataforma digital desenvolvida para atender a uma demanda real de uma empresa de rifas sediada em Porto Seguro – BA, que necessitava de uma solução online, segura e escalável, capaz de operar em todo o território nacional.
+
+A plataforma é voltada para a organização e participação em rifas online, oferecendo uma experiência prática, acessível e confiável tanto para organizadores quanto para participantes. O sistema contempla todo o ciclo operacional das rifas, desde a criação até o sorteio, com processos claros e transparentes.
+
+O sistema conta com integração à plataforma de pagamentos digitais Pagar.me, criada pela Stone, voltada para negócios online, oferecendo soluções completas como checkout, Pix, cartão de crédito, boleto, pagamentos recorrentes e APIs para integração. Essa integração permite o controle automatizado dos pagamentos, a emissão de comprovantes e maior confiabilidade nas transações financeiras.
+
+### 🔑 Principais funcionalidades
+
+- Criação e gerenciamento de rifas online
+- Integração com gateway de pagamentos (Pix, cartão de crédito, boleto e recorrência)
+- Controle automático de pagamentos
+- Emissão de comprovantes
+- Envio de notificações automáticas
+- Processo de sorteio com foco em transparência e rastreabilidade
+
+A navegação foi projetada para ser intuitiva, com foco em acessibilidade, clareza das informações e segurança dos dados, garantindo uma experiência consistente e confiável para todos os usuários.
 
 ## ℹ️ Importante 
 
@@ -9,8 +26,8 @@ ESTE README É ATUALIZADO AUTOMATICAMENTE A CADA COMMIT NA MAIN
 ```
 Repositório..........: Portifólio
 Sistema..............: Porto Seguro da Sorte
-Versão...............: 38 (AUTO-INCREMENTO)
-Data de Atualização..: 08/01/2026 08:51:57
+Versão...............: 39 (AUTO-INCREMENTO)
+Data de Atualização..: 08/01/2026 08:55:30
 Responsável..........: Marcos Morais
 ```
 ## 👥 Participantes
